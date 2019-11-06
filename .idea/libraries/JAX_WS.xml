@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="JAX-WS" type="JAX-WS">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/wildfly-18.0.0.Final.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
