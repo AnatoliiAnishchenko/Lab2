@@ -93,7 +93,7 @@
         <br>
 
         <div class="y-controls">
-            <p>Изменеие Y:</p>
+            <p>Изменение Y:</p>
             <input type="text" class="text-field" id="Y" placeholder="-3 ... 3" oninput="validY()" name="y">
         </div>
         <br>
