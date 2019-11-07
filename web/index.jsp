@@ -11,6 +11,9 @@
 <head>
     <title>Lab2</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles/table-style.css">
+    <link rel="stylesheet" type="text/css" href="styles/form-style.css">
 </head>
 <body>
 <%
@@ -91,7 +94,7 @@
 
         <div class="y-controls">
             <p>Изменеие Y:</p>
-            <input type="text" class="text-field" id="Y" placeholder="-3 ... 3" oninput="valid()" name="y">
+            <input type="text" class="text-field" id="Y" placeholder="-3 ... 3" oninput="validY()" name="y">
         </div>
         <br>
 
@@ -117,7 +120,6 @@
             <input type="radio" name="r" value="5" oninput="valid()">
             5
           </label>
-
         </div>
         <br>
 
@@ -144,23 +146,35 @@
     const Y_field = document.getElementById("Y");
 
     function valid() {
-        check_length(Y_field);
-        const errmsg = document.getElementById("error-message");
         const submit_btn = document.getElementById("submit-btn");
+
+        var isValid = isValidY() && isValidR();
+        submit_btn.disabled = !isValid;
+    }
+
+    function validY() {
+        const errmsg = document.getElementById("error-message");
+
+        if (!isValidY()) {
+            Y_field.style.borderColor = "red";
+            errmsg.textContent = "Error";
+        } else {
+            Y_field.style.borderColor = "green";
+            errmsg.textContent = "";
+        }
+        valid();
+    }
+
+    function isValidY() {
+        check_length(Y_field);
         var Y = Y_field.value.replace(',', '.');
         Y_field.value = Y;
         var isValid = isNumber(Y);
         isValid = isValid && (Y < 3) && (Y > -3);
-        if (!isValid) {
-            errmsg.textContent = "Error";
-            submit_btn.disabled = true;
-        } else {
-            submit_btn.disabled = !rValid();
-            errmsg.textContent = "";
-        }
+        return isValid;
     }
 
-    function rValid() {
+    function isValidR() {
         return getR() !== 0;
     }
 
@@ -206,7 +220,7 @@
         x_dot = (event.clientX - rect.left);
         y = (150 - y_dot);
         x = (-150 + x_dot);
-        if (rValid()) {
+        if (isValidR()) {
             var R = getR();
             y = y / 120 * R;
             x = x / 120 * R;

@@ -7,9 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-
-import static java.lang.Math.abs;
 
 public class AreaCheckServlet extends HttpServlet {
     @Override
@@ -47,8 +44,8 @@ public class AreaCheckServlet extends HttpServlet {
         resp.setContentType("text/html; charset=UTF-8");
         PrintWriter out = resp.getWriter();
         out.write("<html><head>" +
-                "<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n" +
-                "<link rel=\"stylesheet\" type=\"text/css\" href=\"table-style.css\"\n>" +
+                "<link rel=\"stylesheet\" type=\"text/css\" href=\"styles/style.css\">\n" +
+                "<link rel=\"stylesheet\" type=\"text/css\" href=\"styles/table-style.css\"\n>" +
                 "</head><body>");
         out.write(holder.toString());
         out.write("<a href=\"index.jsp\">back to input</a>");
